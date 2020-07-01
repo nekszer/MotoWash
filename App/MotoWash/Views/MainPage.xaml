@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d"
+                  x:Class="MotoWash.Views.MainPage"
+                  Visual="Material"
+                  xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                  iOS:Page.UseSafeArea="True"
+                  xmlns:Xaml="clr-namespace:LightForms.Xaml;assembly=LightForms"
+                  xmlns:Behaviors="clr-namespace:LightForms.Behaviors;assembly=LightForms"
+                  xmlns:Transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                  xmlns:Lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                  xmlns:UI="clr-namespace:Plugin.UI.Xaml;assembly=Plugin.UI.Xaml"
+                  xmlns:Image="clr-namespace:MotoWash.Resources.Images"
+                  xmlns:Controls="clr-namespace:MotoWash.Controls"
+                  xmlns:Views="clr-namespace:MotoWash.Views">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Motowash">
+            <StackLayout>
+                <Image Source="{Image:EmbeddedResource Icon.png}" />
+                <ListView ItemsSource="{Binding Routes}" SelectedItem="{Binding Route}" SelectionMode="Single">
+                    <ListView.Behaviors>
+                        <Behaviors:ViewEventToCommandBehavior EventName="ItemSelected" Command="{Binding GoToRoute}" />
+                        <Behaviors:ListViewRemoveSelectionBehavior />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="12" Margin="6">
+                                    <Controls:Icon Glyph="{Binding Glyph}" Color="Black" />
+                                    <Label Text="{Binding Title}" VerticalOptions="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <Views:HomePage xmlns:LightForms="clr-namespace:LightForms;assembly=LightForms" LightForms:ViewModelLocator.AutoWireViewModel="True" />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>
