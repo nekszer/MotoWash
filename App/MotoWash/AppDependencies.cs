@@ -24,6 +24,11 @@ namespace MotoWash
             container.Register<IEnumFactory<AppMode, IBaseUrl>, EnumFactory<AppMode, IBaseUrl>>();
             container.Register<IEnumFactory<MediaSource, IStreamSource>, EnumFactory<MediaSource, IStreamSource>>();
             container.Register<IEnumFactory<NotificationAction, INotificationAction>, EnumFactory<NotificationAction, INotificationAction>>();
+
+            var ibaseurl = container.Create<IEnumFactory<AppMode, IBaseUrl>>().Resolve(AppMode.Development);
+
+            // API
+            container.Register<IAuthenticationService>(() => new AuthenticationService(ibaseurl));
         }
 
         /// <summary>

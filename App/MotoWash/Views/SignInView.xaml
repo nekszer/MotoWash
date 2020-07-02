@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MotoWash.Views.SignInView"
+             xmlns:Images="clr-namespace:MotoWash.Resources.Images">
+    <ContentView.Content>
+        <StackLayout Padding="12" Spacing="30">
+            <StackLayout>
+                <Label Text="{Binding Correo.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red" />
+                <Entry Text="{Binding Correo.Value}" ReturnType="Next" Placeholder="Correo electrónico" TabIndex="0" Keyboard="Email">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Correo.IsValid}" Value="False">
+                            <Setter Property="TextColor" Value="Gray" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Correo.IsValid}" Value="True">
+                            <Setter Property="TextColor" Value="Black" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Label Text="{Binding Contraseña.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red" />
+                <Entry Text="{Binding Contraseña.Value}" ReturnType="Next" Placeholder="Contraseña" IsPassword="True" TabIndex="1">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Contraseña.IsValid}" Value="False">
+                            <Setter Property="TextColor" Value="Gray" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Contraseña.IsValid}" Value="True">
+                            <Setter Property="TextColor" Value="Black" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </StackLayout>
+            <Label Text="¿Olvidaste tu contraseña?" HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding BtnRecoveryPassword}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Button Text="Entrar" HeightRequest="50" Command="{Binding BtnSignIn}" />
+            <Frame Margin="0" Padding="0" HeightRequest="50" BackgroundColor="#3B5999" CornerRadius="5">
+                <StackLayout Orientation="Horizontal" Padding="12" HorizontalOptions="Center">
+                    <Image Source="{Images:EmbeddedResource LogoBlanco.png}" Aspect="AspectFill" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <Label Text="Entrar con facebook" TextColor="White" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

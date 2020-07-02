@@ -59,6 +59,12 @@ namespace MotoWash.ViewModels
                 },
                 new MenuRoute
                 {
+                    Title = "¿Quienes somos?",
+                    Glyph = Controls.Glyph.QuestionCircle,
+                    Route = AppRoutes.AboutUs
+                },
+                new MenuRoute
+                {
                     Title = "Iniciar sesión",
                     Glyph = Controls.Glyph.SignInAlt,
                     Route = AppRoutes.Login

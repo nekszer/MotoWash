@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MotoWash.Views.SignUpView"
+             xmlns:Images="clr-namespace:MotoWash.Resources.Images">
+    <ContentView.Content>
+        <StackLayout Padding="12" Spacing="12">
+            <Label Text="{Binding Nombre.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red"/>
+            <Entry Text="{Binding Nombre.Value}" ReturnType="Next" TabIndex="0" Placeholder="Nombre">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Nombre.IsValid}" Value="False">
+                        <Setter Property="TextColor" Value="Gray" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Nombre.IsValid}" Value="True">
+                        <Setter Property="TextColor" Value="Black" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="{Binding Telefono.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red"/>
+            <Entry Text="{Binding Telefono.Value}" ReturnType="Next" TabIndex="1" Keyboard="Telephone" Placeholder="Teléfono">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Telefono.IsValid}" Value="False">
+                        <Setter Property="TextColor" Value="Gray" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Telefono.IsValid}" Value="True">
+                        <Setter Property="TextColor" Value="Black" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="{Binding Correo.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red" />
+            <Entry Text="{Binding Correo.Value}" ReturnType="Next" Placeholder="Correo electrónico" TabIndex="2" Keyboard="Email">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Correo.IsValid}" Value="False">
+                        <Setter Property="TextColor" Value="Gray" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Correo.IsValid}" Value="True">
+                        <Setter Property="TextColor" Value="Black" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="{Binding Contraseña.Errors, Converter={StaticResource FirstValidationErrorConverter}}" TextColor="Red" />
+            <Entry Text="{Binding Contraseña.Value}" ReturnType="Next" Placeholder="Contraseña" IsPassword="True" TabIndex="3">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Contraseña.IsValid}" Value="False">
+                        <Setter Property="TextColor" Value="Gray" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Contraseña.IsValid}" Value="True">
+                        <Setter Property="TextColor" Value="Black" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Button Text="Registrarse" HeightRequest="50" Command="{Binding BtnSignUp}"/>
+            <Frame Margin="0" Padding="0" HeightRequest="50" BackgroundColor="#3B5999" CornerRadius="5">
+                <StackLayout Orientation="Horizontal" Padding="12" HorizontalOptions="Center">
+                    <Image Source="{Images:EmbeddedResource LogoBlanco.png}" Aspect="AspectFill" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <Label Text="Entrar con facebook" TextColor="White" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <CheckBox IsChecked="{Binding TerminosCondicionesCheck}" />
+                <Label Text="Al registrarte aceptas los términos y condiciones" VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

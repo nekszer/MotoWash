@@ -11,12 +11,14 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\icon.png" />
+    <None Remove="Resources\Images\LogoBlanco.png" />
     <None Remove="Resources\Strings\Common.json" />
     <None Remove="Resources\Strings\Main.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\Icon.png" />
+    <EmbeddedResource Include="Resources\Images\LogoBlanco.png" />
     <EmbeddedResource Include="Resources\Strings\Common.json" />
     <EmbeddedResource Include="Resources\Strings\Main.json" />
   </ItemGroup>
@@ -56,13 +58,25 @@
     <Compile Update="Themes\Common.xaml.cs">
       <DependentUpon>Common.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SignInView.xaml.cs">
+      <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AboutUsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SignInView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SignUpView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

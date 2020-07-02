@@ -4,12 +4,36 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MotoWash.Views.LoginPage">
+             x:Class="MotoWash.Views.LoginPage"
+             xmlns:Sharpnado="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+             xmlns:Images="clr-namespace:MotoWash.Resources.Images"
+             Visual="Material"
+             xmlns:Views="clr-namespace:MotoWash.Views">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Iniciar sesión"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <BoxView Color="#41B5E6" />
+                <Image Source="{Images:EmbeddedResource LogoBlanco.png}" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="160" />
+            </Grid>
+            <StackLayout Grid.Row="1">
+                <Sharpnado:TabHostView x:Name="TabHost" BackgroundColor="#41B5E6" 
+                                   SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}" HeightRequest="50">
+                    <Sharpnado:TabHostView.Tabs>
+                        <Sharpnado:UnderlinedTabItem Label="Iniciar sesión" SelectedTabColor="White" UnselectedLabelColor="LightGray"></Sharpnado:UnderlinedTabItem>
+                        <Sharpnado:UnderlinedTabItem Label="Crear una cuenta" SelectedTabColor="White" UnselectedLabelColor="LightGray"></Sharpnado:UnderlinedTabItem>
+                    </Sharpnado:TabHostView.Tabs>
+                </Sharpnado:TabHostView>
+                <ScrollView>
+                    <Sharpnado:ViewSwitcher x:Name="Switcher" Animate="True" SelectedIndex="{Binding SelectedViewIndex, Mode=TwoWay}">
+                        <Views:SignInView xmlns:LightForms="clr-namespace:LightForms;assembly=LightForms" LightForms:ViewModelLocator.AutoWireViewModel="True" />
+                        <Views:SignUpView xmlns:LightForms="clr-namespace:LightForms;assembly=LightForms" LightForms:ViewModelLocator.AutoWireViewModel="True" />
+                    </Sharpnado:ViewSwitcher>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

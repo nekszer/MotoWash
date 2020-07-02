@@ -17,6 +17,11 @@ namespace MotoWash
 
         public static string Home { get; } = "/home";
 
+        public static string SignIn { get; } = "/signin";
+
+        public static string SignUp { get; } = "/signup";
+        public static string AboutUs { get; set; } = "/aboutus";
+
         /// <summary>
         /// RoutingService
         /// </summary>
@@ -33,6 +38,12 @@ namespace MotoWash
             routingservice.Route<LoginPage, LoginViewModel>(Login);
 
             routingservice.Route<HomePage, HomeViewModel>(Home);
+
+            routingservice.Route<SignInView, SignInViewModel>(SignIn);
+
+            routingservice.Route<SignUpView, SignUpViewModel>(SignUp);
+
+            routingservice.Route<AboutUsPage, AboutUsViewModel>(AboutUs);
         }
     }
 }

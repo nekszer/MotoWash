@@ -8,20 +8,12 @@ using System.Collections.ObjectModel;
 
 namespace MotoWash.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class AboutUsViewModel : ViewModelBase
     {
-
-        private int selectedViewIndex;
-        public int SelectedViewIndex
-        {
-            get { return selectedViewIndex; }
-            set { selectedViewIndex = value; OnPropertyChanged(); }
-        }
 
         public override void Appearing(string route, object data)
         {
             base.Appearing(route, data);
-            SelectedViewIndex = 0;
         }
 
     }
