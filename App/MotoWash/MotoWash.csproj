@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Resources\Images\icon.png" />
     <None Remove="Resources\Images\LogoBlanco.png" />
+    <None Remove="Resources\Images\LogoCeleste.png" />
     <None Remove="Resources\Strings\Common.json" />
     <None Remove="Resources\Strings\Main.json" />
   </ItemGroup>
@@ -19,6 +20,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\Icon.png" />
     <EmbeddedResource Include="Resources\Images\LogoBlanco.png" />
+    <EmbeddedResource Include="Resources\Images\LogoCeleste.png" />
     <EmbeddedResource Include="Resources\Strings\Common.json" />
     <EmbeddedResource Include="Resources\Strings\Main.json" />
   </ItemGroup>
@@ -71,6 +73,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SelectedServicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignInView.xaml">

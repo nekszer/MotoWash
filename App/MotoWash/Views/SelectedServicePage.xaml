@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Selecciona tu servicio"
+             x:Class="MotoWash.Views.SelectedServicePage"
+             xmlns:Behaviors="clr-namespace:LightForms.Behaviors;assembly=LightForms"
+             xmlns:AppBehaviors="clr-namespace:MotoWash.Behaviors"
+             xmlns:Models="clr-namespace:MotoWash.Models">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="0,20,0,0" WidthRequest="250" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.Column="0" Grid.ColumnSpan="5" Progress="0.5" Margin="20,0"
+                                 ProgressColor="#41B5E6" HeightRequest="15" VerticalOptions="Center" />
+                    <Frame Grid.Column="0" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="2" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="4" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="3" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                </Grid>
+                <Grid BackgroundColor="#41B5E6">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="Center">
+                        <Image Source="{Binding Model.Image}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
+                        <Label Text="{Binding Model.Name}" VerticalOptions="Center" FontSize="Large" TextColor="White"
+                               LineBreakMode="TailTruncation"/>
+                    </StackLayout>
+                </Grid>
+                <ListView ItemsSource="{Binding Categories}" Margin="12">
+                    <ListView.Behaviors>
+                        <Behaviors:ListViewRemoveSelectionBehavior />
+                        <AppBehaviors:ListViewHeightFromItemsBehavior RowHeight="52" x:TypeArguments="Models:CategoryModel" />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid VerticalOptions="Center" ColumnSpacing="15" HeightRequest="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <RadioButton Grid.Column="0" GroupName="ServiceType" IsChecked="{Binding Selected}" />
+                                    <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
+                                    <Label Grid.Column="2" Text="{Binding Price, StringFormat='${0:N}'}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid BackgroundColor="#41B5E6">
+                    <StackLayout Margin="20">
+                        <Label Text="¿Necesitas algún extra?" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </StackLayout>
+                </Grid>
+                <ListView ItemsSource="{Binding Extras}" HasUnevenRows="True"
+                          Margin="12">
+                    <ListView.Behaviors>
+                        <Behaviors:ListViewRemoveSelectionBehavior />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Grid VerticalOptions="Center" ColumnSpacing="15" Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="{Binding Name}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
+                                        <Label Grid.Column="1" Text="{Binding Price, StringFormat='${0:N}'}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
+                                        <Switch Grid.Column="2" IsToggled="{Binding Selected}" />
+                                    </Grid>
+                                    <Label TextType="Html" Text="{Binding Html}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

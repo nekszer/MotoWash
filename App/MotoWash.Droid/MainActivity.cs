@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using MotoWash.Droid.Services;
 using Sharpnado.Presentation.Forms.Droid;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace MotoWash.Droid
 {
@@ -28,15 +29,16 @@ namespace MotoWash.Droid
             CachedImageRenderer.Init(true);
             SharpnadoInitializer.Initialize();
             FormsMaterial.Init(this, savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Forms.SetFlags("RadioButton_Experimental");
+            Platform.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
             LoadApplication(new App(this));
             CreateNotificationFromIntent(base.Intent);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 

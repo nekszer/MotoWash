@@ -4,12 +4,73 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MotoWash.Views.HomePage">
+             x:Class="MotoWash.Views.HomePage"
+             xmlns:Images="clr-namespace:MotoWash.Resources.Images"
+             xmlns:Controls="clr-namespace:MotoWash.Controls"
+             Title="Solicitar servicio"
+             xmlns:Behaviors="clr-namespace:LightForms.Behaviors;assembly=LightForms">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Home"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <!-- <Image Source="https://th.bing.com/th/id/OIP.5H86_5RvR_BIfsM6ofU18wHaEn?pid=Api&rs=1" HeightRequest="150" /> -->
+                    <Image Source="{Images:EmbeddedResource Icon.png}" HeightRequest="200" />
+                    <Image Source="{Images:EmbeddedResource LogoCeleste.png}" HeightRequest="180" HorizontalOptions="End" VerticalOptions="Start" Margin="20" />
+                </Grid>
+                <Grid Margin="20" WidthRequest="250" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.Column="0" Grid.ColumnSpan="5" Progress="0" Margin="20,0"
+                                 ProgressColor="#41B5E6" HeightRequest="15" VerticalOptions="Center" />
+                    <Frame Grid.Column="0" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="2" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="4" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="3" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                </Grid>
+                <Label Text="Selecciona uno de nuestros paquetes" TextColor="#41B5E6" HorizontalTextAlignment="Center"
+                       FontSize="Medium" />
+
+                <ListView ItemsSource="{Binding Servicios}" HasUnevenRows="True">
+                    <ListView.Behaviors>
+                        <Behaviors:ListViewRemoveSelectionBehavior />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="12" BackgroundColor="Transparent">
+                                    <Grid>
+                                        <StackLayout Grid.Column="0">
+                                            <Label Text="{Binding Html}" VerticalOptions="FillAndExpand" TextType="Html" />
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1" HeightRequest="150" VerticalOptions="Start">
+                                            <Grid ColumnSpacing="0">
+                                                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Aspect="AspectFill" Source="{Binding Image}" />
+                                                <Label Grid.Column="1" Grid.Row="0" Text="Desde" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="End" />
+                                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Price, StringFormat='${0:N}'}" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Black" />
+                                                <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Text="Solicitar" BackgroundColor="#41B5E6" TextColor="White" CornerRadius="5"
+                                                        Command="{Binding Select}" CommandParameter="{Binding .}" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
