@@ -9,7 +9,7 @@ using MotoWash.Services;
 
 namespace MotoWash.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase, LightForms.Services.IMasterDetailPageOptions
     {
 
         #region Notified Property Servicios
@@ -22,6 +22,8 @@ namespace MotoWash.ViewModels
             get { return servicios; }
             set { servicios = value; OnPropertyChanged(); }
         }
+
+        public bool IsPresentedAfterNavigation => false;
         #endregion
 
         public override void Appearing(string route, object data)

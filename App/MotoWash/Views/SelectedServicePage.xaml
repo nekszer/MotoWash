@@ -56,7 +56,11 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <RadioButton Grid.Column="0" GroupName="ServiceType" IsChecked="{Binding Selected}" />
+                                    <RadioButton Grid.Column="0" GroupName="ServiceType" IsChecked="{Binding Selected}">
+                                        <RadioButton.Behaviors>
+                                            <Behaviors:ViewEventToCommandBehavior EventName="CheckedChanged" Command="{Binding CategorySelected}" />
+                                        </RadioButton.Behaviors>
+                                    </RadioButton>
                                     <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
                                     <Label Grid.Column="2" Text="{Binding Price, StringFormat='${0:N}'}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
                                 </Grid>
@@ -86,7 +90,11 @@
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="{Binding Name}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
                                         <Label Grid.Column="1" Text="{Binding Price, StringFormat='${0:N}'}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
-                                        <Switch Grid.Column="2" IsToggled="{Binding Selected}" />
+                                        <Switch Grid.Column="2" IsToggled="{Binding Selected}">
+                                            <Switch.Behaviors>
+                                                <Behaviors:ViewEventToCommandBehavior EventName="Toggled" Command="{Binding ExtraSelected}" />
+                                            </Switch.Behaviors>
+                                        </Switch>
                                     </Grid>
                                     <Label TextType="Html" Text="{Binding Html}" />
                                 </StackLayout>
@@ -94,6 +102,29 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <StackLayout Orientation="Horizontal" Margin="12,0,12,15">
+                    <Entry Placeholder="Código de descuento" HorizontalOptions="FillAndExpand" />
+                    <Button Text="Aplicar" BackgroundColor="#41B5E6" CornerRadius="5" />
+                </StackLayout>
+
+                <Label Text="{Binding Total, StringFormat='TOTAL: ${0:N}'}" FontSize="Title" HorizontalTextAlignment="Center" TextColor="#41B5E6" />
+                <StackLayout Margin="12" Spacing="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Costo de paquete:" HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding Model.Price, StringFormat='${0:N}'}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Servicios adicionales" HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding PrecioExtra, StringFormat='${0:N}'}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Descuento:" HorizontalOptions="StartAndExpand" />
+                        <Label Text="$0.00" />
+                    </StackLayout>
+                </StackLayout>
+
+                <Button Text="Continuar" BackgroundColor="#41B5E6" CornerRadius="5" Margin="12" Command="{Binding BtnContinue}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

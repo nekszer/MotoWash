@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LightForms.Commands;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,5 +11,6 @@ namespace MotoWash.Models
         public string Name { get; set; }
         public double Price { get; set; }
         public bool Selected { get; set; }
+        public ICommand CategorySelected { get; set; }
     }
 }

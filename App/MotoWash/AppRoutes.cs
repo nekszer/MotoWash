@@ -21,8 +21,8 @@ namespace MotoWash
 
         public static string SignUp { get; } = "/signup";
         public static string AboutUs { get; set; } = "/aboutus";
-
         public static string SelectedService { get; set; } = "/serviceselected";
+        public static string Schedule { get; set; } = "/schedule";
 
         /// <summary>
         /// RoutingService
@@ -48,6 +48,8 @@ namespace MotoWash
             routingservice.Route<AboutUsPage, AboutUsViewModel>(AboutUs);
 
             routingservice.Route<SelectedServicePage, SelectedServiceViewModel>(SelectedService);
+
+            routingservice.Route<SchedulePage, ScheduleViewModel>(Schedule);
         }
     }
 }

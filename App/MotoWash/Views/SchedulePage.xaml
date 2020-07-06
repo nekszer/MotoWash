@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MotoWash.Views.SchedulePage"
+             xmlns:Behaviors="clr-namespace:LightForms.Behaviors;assembly=LightForms"
+             x:Name="Page"
+             Title="Agenda tu cita">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="12" Spacing="20">
+                <Grid Margin="0,20,0,0" WidthRequest="250" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.Column="0" Grid.ColumnSpan="5" Progress="1" Margin="20,0"
+                                 ProgressColor="#41B5E6" HeightRequest="15" VerticalOptions="Center" />
+                    <Frame Grid.Column="0" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="2" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                    <Frame Grid.Column="4" BackgroundColor="#41B5E6" WidthRequest="40" HeightRequest="40" CornerRadius="20" Padding="0"
+                           HorizontalOptions="Center">
+                        <Label Text="3" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" />
+                    </Frame>
+                </Grid>
+
+                <DatePicker Date="{Binding ServiceDate}" MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}" >
+                    <DatePicker.Behaviors>
+                        <Behaviors:ViewEventToCommandBehavior EventName="DateSelected" Command="{Binding DateSelected}" />
+                    </DatePicker.Behaviors>
+                </DatePicker>
+
+                <CollectionView ItemsSource="{Binding Hours}" SelectedItem="{Binding Hour}" HeightRequest="50" SelectionMode="Single" SelectionChangedCommand="{Binding SelectedHour}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="1" Orientation="Horizontal" HorizontalItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Gray" CornerRadius="5" VerticalOptions="Center" Padding="15">
+                                <Label Text="{Binding .}" TextColor="White" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Agendar" Command="{Binding BtnScheduleService}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
