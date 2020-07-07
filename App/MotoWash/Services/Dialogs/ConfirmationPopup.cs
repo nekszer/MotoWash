@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Rg.Plugins.Popup.Services;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace MotoWash.Services
 {

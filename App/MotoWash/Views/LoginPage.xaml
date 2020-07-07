@@ -8,7 +8,8 @@
              xmlns:Sharpnado="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
              xmlns:Images="clr-namespace:MotoWash.Resources.Images"
              Visual="Material"
-             xmlns:Views="clr-namespace:MotoWash.Views">
+             xmlns:Views="clr-namespace:MotoWash.Views"
+             Title="Iniciar sesión">
     <ContentPage.Content>
         <Grid ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>

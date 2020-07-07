@@ -5,18 +5,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MotoWash.Views.AboutUsPage"
-             Title="¿Quienes somos?">
+             Title="¿Quienes somos?"
+             xmlns:Effects="clr-namespace:MotoWash.Effects">
     <ContentPage.Content>
         <StackLayout Padding="12">
             <Label Text="Nosotros" FontSize="Title" />
             <Label Text="Motowash es una empresa dedicada a la ejecución de servicios de limpieza integral y desinfección en industria de transporte, automotriz, conservación de maquinaria pesada y equipos industriales, además brindamos nuestros servicios al sector doméstico agendando citas a través de nuestra aplicación móvil"
-                   FontSize="Body"/>
+                   FontSize="Body">
+                <Label.Effects>
+                    <Effects:LabelJustifyEffect />
+                </Label.Effects>
+            </Label>
             <Label Text="Misión" Margin="0,15,0,0" FontSize="Title" />
             <Label Text="Ser la mejor opción en el mercado de la limpieza, contando siempre con un equipo humano calificado, comprometido y responsable. Nos esforzamos por ofrecer valor a nuestros socios y crecimiento constante a nuestros empleados"
-                   FontSize="Body"/>
+                   FontSize="Body">
+                <Label.Effects>
+                    <Effects:LabelJustifyEffect />
+                </Label.Effects>
+            </Label>
             <Label Text="Visión" Margin="0,15,0,0" FontSize="Title" />
             <Label Text="Consolidarnos como el proveedor líder de servicios de limpieza en Nuevo León y tener presencia a nivel nacional mediante desarrollo de tecnologias propias que nos permiten crear mejores servicios."
-                   FontSize="Body"/>
+                   FontSize="Body">
+                <Label.Effects>
+                    <Effects:LabelJustifyEffect />
+                </Label.Effects>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

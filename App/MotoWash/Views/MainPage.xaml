@@ -19,14 +19,18 @@
 
     <MasterDetailPage.Master>
         <ContentPage Title="Motowash">
-            <Grid Margin="12">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0">
-                    <Image Source="{Image:EmbeddedResource Icon.png}" />
-                    <ListView ItemsSource="{Binding Routes}" SelectedItem="{Binding Route}" SelectionMode="Single">
+                    <Grid HeightRequest="400">
+                        <BoxView Color="#41B5E6" />
+                        <Image Source="{Image:EmbeddedResource LogoBlanco.png}" Aspect="AspectFit" />
+                    </Grid>
+                    <ListView ItemsSource="{Binding Routes}" SelectedItem="{Binding Route}" SelectionMode="Single"
+                              Margin="12">
                         <ListView.Behaviors>
                             <Behaviors:ViewEventToCommandBehavior EventName="ItemSelected" Command="{Binding GoToRoute}" />
                             <Behaviors:ListViewRemoveSelectionBehavior />
@@ -43,7 +47,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <StackLayout Grid.Row="1" Spacing="6">
+                <StackLayout Grid.Row="1" Spacing="6" Margin="12">
                     <Label Text="¿Tienes dudas?" HorizontalTextAlignment="Center" FontSize="Large" />
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Controls:Icon Glyph="Phone" Color="Gray" Size="25" />

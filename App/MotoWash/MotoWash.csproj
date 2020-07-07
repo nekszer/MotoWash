@@ -10,17 +10,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\Asiento.jpg" />
+    <None Remove="Resources\Images\Colchon.jpg" />
     <None Remove="Resources\Images\icon.png" />
     <None Remove="Resources\Images\LogoBlanco.png" />
     <None Remove="Resources\Images\LogoCeleste.png" />
+    <None Remove="Resources\Images\Sofa.jpg" />
     <None Remove="Resources\Strings\Common.json" />
     <None Remove="Resources\Strings\Main.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\Asiento.jpg" />
+    <EmbeddedResource Include="Resources\Images\Colchon.jpg" />
     <EmbeddedResource Include="Resources\Images\Icon.png" />
     <EmbeddedResource Include="Resources\Images\LogoBlanco.png" />
     <EmbeddedResource Include="Resources\Images\LogoCeleste.png" />
+    <EmbeddedResource Include="Resources\Images\Sofa.jpg" />
     <EmbeddedResource Include="Resources\Strings\Common.json" />
     <EmbeddedResource Include="Resources\Strings\Main.json" />
   </ItemGroup>
@@ -29,7 +35,7 @@
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
     <PackageReference Include="ApiWrapper" Version="1.0.9" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.1.2" />
-    <PackageReference Include="LightForms" Version="2.4.0" />
+    <PackageReference Include="LightForms" Version="2.4.6" />
     <PackageReference Include="LightForms.Skeleton" Version="1.0.0" />
     <PackageReference Include="LightForms.Sqlite" Version="1.0.2" />
     <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />

@@ -8,7 +8,13 @@
              x:Class="MotoWash.Views.SelectedServicePage"
              xmlns:Behaviors="clr-namespace:LightForms.Behaviors;assembly=LightForms"
              xmlns:AppBehaviors="clr-namespace:MotoWash.Behaviors"
-             xmlns:Models="clr-namespace:MotoWash.Models">
+             xmlns:Models="clr-namespace:MotoWash.Models"
+             xmlns:LocalConverters="clr-namespace:MotoWash.Converters">
+
+    <ContentPage.Resources>
+        <LocalConverters:EmbeddedResourceConverter x:Key="EmbeddedResourceConverter" />
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -37,7 +43,7 @@
                 </Grid>
                 <Grid BackgroundColor="#41B5E6">
                     <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="Center">
-                        <Image Source="{Binding Model.Image}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
+                        <Image Source="{Binding Model.Image, Converter={StaticResource EmbeddedResourceConverter}}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
                         <Label Text="{Binding Model.Name}" VerticalOptions="Center" FontSize="Large" TextColor="White"
                                LineBreakMode="TailTruncation"/>
                     </StackLayout>

@@ -6,6 +6,7 @@ using LightForms.Commands;
 using System.Collections.ObjectModel;
 using MotoWash.Models;
 using MotoWash.Services;
+using MotoWash.Resources.Images;
 
 namespace MotoWash.ViewModels
 {
@@ -29,6 +30,7 @@ namespace MotoWash.ViewModels
         public override void Appearing(string route, object data)
         {
             base.Appearing(route, data);
+
             Servicios = new ObservableCollection<ServiceModel>
             {
                 new ServiceModel
@@ -61,7 +63,7 @@ namespace MotoWash.ViewModels
                                 <span>-Pre-lavado con cepillo</span><br>
                             </body>
                             </html>",
-                     Image = "https://laopinion.com/wp-content/uploads/sites/3/2018/02/shutterstock_380743111.jpg",
+                     Image = "Asiento.jpg",
                      Select = new Command<ServiceModel>(SeleccionarServicio_Clicked)
                 },
                 new ServiceModel
@@ -94,7 +96,7 @@ namespace MotoWash.ViewModels
                                 <span>-Pre-lavado con cepillo</span><br>
                             </body>
                             </html>",
-                     Image = "https://laopinion.com/wp-content/uploads/sites/3/2018/02/shutterstock_380743111.jpg",
+                     Image = "Colchon.jpg",
                      Select = new Command<ServiceModel>(SeleccionarServicio_Clicked)
                 },
                 new ServiceModel
@@ -127,7 +129,7 @@ namespace MotoWash.ViewModels
                                 <span>-Pre-lavado con cepillo</span><br>
                             </body>
                             </html>",
-                     Image = "https://laopinion.com/wp-content/uploads/sites/3/2018/02/shutterstock_380743111.jpg",
+                     Image = "Sofa.jpg",
                      Select = new Command<ServiceModel>(SeleccionarServicio_Clicked)
                 }
             };

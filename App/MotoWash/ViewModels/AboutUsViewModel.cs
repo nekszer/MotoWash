@@ -8,8 +8,9 @@ using System.Collections.ObjectModel;
 
 namespace MotoWash.ViewModels
 {
-    public class AboutUsViewModel : ViewModelBase
+    public class AboutUsViewModel : ViewModelBase, LightForms.Services.IMasterDetailPageOptions
     {
+        public bool IsPresentedAfterNavigation => false;
 
         public override void Appearing(string route, object data)
         {

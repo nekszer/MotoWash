@@ -3,7 +3,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Tantra.Extensions
+namespace MotoWash.Extensions
 {
     [ContentProperty("Command")]
     public class BackFromPopup : IMarkupExtension

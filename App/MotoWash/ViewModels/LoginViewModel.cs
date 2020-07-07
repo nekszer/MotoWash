@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace MotoWash.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, LightForms.Services.IMasterDetailPageOptions
     {
 
         private int selectedViewIndex;
@@ -17,6 +17,8 @@ namespace MotoWash.ViewModels
             get { return selectedViewIndex; }
             set { selectedViewIndex = value; OnPropertyChanged(); }
         }
+
+        public bool IsPresentedAfterNavigation => false;
 
         public override void Appearing(string route, object data)
         {
